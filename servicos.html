@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços - Castelo Web</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      color: white;
+    }
+
+    /* Fundo animado */
+    .fundo-animado-servicos {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      background: radial-gradient(ellipse at bottom, #0a1623 0%, #000000 100%);
+      overflow: hidden;
+    }
+
+    .fundo-animado-servicos::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 2px, transparent 2px);
+      background-size: 100px 100px;
+      animation: moverEstrelas 60s linear infinite;
+      opacity: 0.15;
+    }
+
+    @keyframes moverEstrelas {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(100px, 100px); }
+    }
+
+    .fundo-animado-servicos::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(0,255,255,0.2) 0%, transparent 70%),
+                  radial-gradient(circle, rgba(255,0,255,0.15) 20%, transparent 80%);
+      animation: aurora 12s ease-in-out infinite alternate;
+      filter: blur(80px);
+    }
+
+    @keyframes aurora {
+      0% {
+        transform: translate(-30%, -20%) rotate(0deg);
+      }
+      100% {
+        transform: translate(10%, 20%) rotate(10deg);
+      }
+    }
+
+    .container {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #80b4ef;
+    }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card-servico {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .card-servico:nth-child(1) { animation-delay: 0.3s; }
+    .card-servico:nth-child(2) { animation-delay: 0.6s; }
+    .card-servico:nth-child(3) { animation-delay: 0.9s; }
+    .card-servico:nth-child(4) { animation-delay: 1.2s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-servico:hover {
+      transform: translateY(-10px);
+    }
+
+    .card-servico h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .card-servico p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #dddddd;
+    }
+
+    .voltar-fixo {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #042a54;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s, transform 0.3s;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 2s;
+    }
+
+    .voltar-fixo:hover {
+      background: #021428;
+      transform: translateY(10px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fundo-animado-servicos"></div>
+
+  <div class="container fade-in">
+    <h1>Nossos Serviços</h1>
+
+    <div class="servicos-grid">
+      <div class="card-servico">
+        <h3>🌐 Criação de Sites</h3>
+        <p>Desenvolvemos sites bonitos, responsivos e fáceis de navegar.</p>
+      </div>
+      <div class="card-servico">
+        <h3>🎨 Design Personalizado</h3>
+        <p>Layouts únicos com base na identidade da sua marca.</p>
+      </div>
+      <div class="card-servico">
+        <h3>⚙ Manutenção & Suporte</h3>
+        <p>Cuidamos do seu site para ele estar sempre atualizado e seguro.</p>
+      </div>
+      <div class="card-servico">
+        <h3>📈 SEO & Otimização</h3>
+        <p>Melhore seu posicionamento no Google e alcance mais pessoas.</p>
+      </div>
+    </div>
+  </div>
+
+  <a class="voltar-fixo" href="index.html">← Voltar para a Página Inicial</a>
+
+</body>
+</html>
