@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Castelo Web - Início</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Div para imagem de fundo fixa e animada -->
+  <div class="background"></div>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="https://th.bing.com/th/id/OIP.MpL3VEYNfWCpJJSU0jHXdQHaFj?w=248&h=186&c=7&r=0&o=7&dpr=1.6&pid=1.7&rm=3" alt="Logo do castelo">
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar..." onkeyup="pesquisar(event)">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+
+    <ul class="menu">
+      <li><a href="index.html">⌂ Início</a></li>
+      <li><a href="sobre.html">👤 Sobre</a></li>
+      <li><a href="servicos.html">⚙ Serviços</a></li>
+      <li><a href="contato.html">✉ Contato</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <h1>Bem-vindo</h1>
+  </main>
+
+  <script>
+  const paginas = [
+    {
+      nome: "Início",
+      url: "index.html",
+      conteudo: "Bem-vindo ao Castelo Web. Página inicial com informações sobre nosso site e serviços."
+    },
+    {
+      nome: "Sobre",
+      url: "sobre.html",
+      conteudo: "Conheça nossa equipe, história e missão. Informações sobre o Castelo Web e seus fundadores."
+    },
+    {
+      nome: "Serviços",
+      url: "servicos.html",
+      conteudo: "Veja os serviços que oferecemos: desenvolvimento web, design, consultoria, manutenção."
+    },
+    {
+      nome: "Contato",
+      url: "contato.html",
+      conteudo: "Fale conosco através do formulário, telefone ou email. Estamos prontos para ajudar."
+    }
+  ];
+
+  function pesquisar(event) {
+    if (event.key === "Enter") {
+      const termo = document.getElementById("searchInput").value.toLowerCase().trim();
+
+      if (!termo) {
+        alert("Digite algo para pesquisar.");
+        return;
+      }
+
+      // Busca no array pelas páginas que contenham o termo no nome ou conteúdo
+      const resultados = paginas.filter(pagina => 
+        pagina.nome.toLowerCase().includes(termo) ||
+        pagina.conteudo.toLowerCase().includes(termo)
+      );
+
+      if (resultados.length === 1) {
+        // Se tiver só um resultado, redireciona direto
+        window.location.href = resultados[0].url;
+      } else if (resultados.length > 1) {
+        // Se tiver mais de um resultado, redireciona para o mais relevante (exemplo: o que tiver o termo no nome)
+        const maisRelevante = resultados.find(p => p.nome.toLowerCase().includes(termo)) || resultados[0];
+        window.location.href = maisRelevante.url;
+      } else {
+        alert(`Nenhuma página encontrada para: "${termo}"`);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
